@@ -40,10 +40,10 @@ export default class ListController {
 
     addTask(event, listIndex) {
         event.preventDefault()
+        console.log("adding task")
         let form = event.target
         let newTask = form.task.value
         _listService.addTask(newTask, listIndex)
-        console.log("adding task")
         _drawLists()
     }
 
@@ -51,5 +51,12 @@ export default class ListController {
         _listService.deleteList(index)
         _drawLists()
     }
+
+    deleteTask(listIndex, taskIndex) {
+        _listService.deleteTask(listIndex, taskIndex)
+        _drawLists()
+    }
+
+
 
 }

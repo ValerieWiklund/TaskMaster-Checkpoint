@@ -4,7 +4,7 @@ export default class List {
 
     constructor(data) {
         this.name = data.name
-        this.description = data.description || null
+        this.description = data.description || ""
         this.tasks = data.tasks || []
     }
 
@@ -14,20 +14,20 @@ export default class List {
     getTemplate(index) {
         let template = `
      <div class="col-4">
-                <h1>${this.name}</h1>
+                <h4>${this.name}</h4>
                 <p>${this.description}</p>
                 <ul>`
         template += this.drawTasks(index)
         template += `
                 </ul>
-                <form onclick="app.controllers.listController.addTask(event, ${index})>
+                <form onsubmit="app.controllers.listController.addTask(event, ${index})">
                     <div class="form-group">
                         <label for "task">task</label>
                         <input type="text" class="form-control" name="task" placeholder="Enter task">
                     </div>
-                    <button type="submit" >+</button>
+                    <button type="submit">+</button>
                 </form>
-                <button type="btn btn-danger" onclick="app.controllers.listController.deleteList(${index})">X</button>
+                <button type="btn btn-danger" onclick="app.controllers.listController.deleteList(${index})"> X </button>
                 </div>
             </div>
         `

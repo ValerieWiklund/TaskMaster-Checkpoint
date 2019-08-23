@@ -18,20 +18,31 @@ export default class ListService {
     //what methods will be required to support that functionality?
     constructor() {
         console.log("ListService checking in")
+        this.getLists()
     }
 
     addList(newList) {
         _state.lists.push(new List(newList))
+        this.saveLists()
         console.log(_state.lists)
     }
 
     addTask(newTask, listIndex) {
         _state.lists[listIndex].tasks.push(newTask);
+        this.saveLists()
     }
 
     deleteList(index) {
         _state.lists.splice(index, 1)
+        this.saveLists()
     }
+
+    deleteTask(listIndex, taskIndex) {
+        _state.lists[listIndex].tasks.splice(taskIndex, 1)
+        this.saveLists()
+
+    }
+
 
     get List() {
         return _state.lists.map(list => new List(list))
