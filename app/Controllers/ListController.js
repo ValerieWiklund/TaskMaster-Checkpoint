@@ -5,7 +5,15 @@ let _listService = new ListService()
 
 //TODO Don't forget to render to the screen after every data change.
 function _drawLists() {
+    let template = ``
+    let lists = _listService.List
 
+    console.log("List Controller checking in ")
+
+    lists.forEach((list, index) => {
+        template += list.getTemplate(index)
+    });
+    document.querySelector("#lists").innerHTML = template
 }
 
 
@@ -19,4 +27,28 @@ export default class ListController {
     }
 
     //TODO: Your app will need the ability to create, and delete both lists and listItems
+    addList(event) {
+        event.preventDefault()
+        let form = event.target
+        let newList = {
+            name: form.name.value,
+            description: form.description.value
+        }
+        _listService.addList(newList)
+        _drawLists()
+    }
+
+    addTask(event, listIndex) {
+        event.preventDefault()
+        let form = event.target
+        let newTask = form.task.value
+        _listService.addTask(newTask, listIndex)
+        _drawLists()
+    }
+
+    deleteList(index) {
+        _listService.deleteList(index)
+        _drawLists()
+    }
+
 }

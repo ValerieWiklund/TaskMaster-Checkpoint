@@ -2,18 +2,40 @@ import List from "../models/List.js";
 
 //Private
 let _state = {
-    lists: []
+    lists: [new List({
+        name: "Weekend To Do",
+        description: "Everything I must do this weekend, before I can play",
+        tasks: ["mow lawn", "laundry", "grocery shopping"]
+    })]
 }
 
 
 //Public
-export default class ValuesService {
+export default class ListService {
+
     //TODO  Here is where we handle all of our data manipulation, 
     //given the information you need in the controller, 
     //what methods will be required to support that functionality?
+    constructor() {
+        console.log("ListService checking in")
+    }
 
+    addList(newList) {
+        _state.lists.push(new List(newList))
+        console.log(_state.lists)
+    }
 
+    addTask(newTask, listIndex) {
+        _state.lists[listIndex].tasks.push(newTask);
+    }
 
+    deleteList(index) {
+        _state.lists.splice(index, 1)
+    }
+
+    get List() {
+        return _state.lists.map(list => new List(list))
+    }
 
     //NOTE You will need this code to persist your data into local storage, these methods should not require changing
 
