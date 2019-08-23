@@ -16,8 +16,7 @@ export default class List {
      <div class="col-4">
                 <h1>${this.name}</h1>
                 <p>${this.description}</p>
-                <ul>
-                `
+                <ul>`
         template += this.drawTasks(index)
         template += `
                 </ul>
@@ -43,7 +42,7 @@ export default class List {
     drawTasks(listIndex) {
         let taskTemplate = ""
         this.tasks.forEach((tsks, taskIndex) => {
-            taskTemplate += `<li> ${tsks} <span onclick = "app.controllers.listController.deleteTask(${listIndex},${taskIndex})</li>"`
+            taskTemplate += `<li> ${tsks} <span onclick = "app.controllers.listController.deleteTask(${listIndex},${taskIndex})">x </span></li>`
         });
         return taskTemplate
     }
