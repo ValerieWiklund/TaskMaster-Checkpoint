@@ -15,7 +15,7 @@ export default class List {
         let template = `
      <div class="col-3 border m-2">
              <div class="title d-flex justify-content-between">
-                <h4>${this.name}</h4> <button class ="btn btn-outline-dark btn-sm my-2" onclick="app.controllers.listController.deleteList(${index})"> x </button>
+                <h4>${this.name}</h4> <button class ="btn btn-outline-secondary btn-sm my-2" onclick="app.controllers.listController.deleteList(${index})"> x </button>
              </div>
                 <p>${this.description}</p>
                 <ul>`
@@ -23,7 +23,7 @@ export default class List {
         template += `
                 </ul>
                 <form class="form-inline" onsubmit="app.controllers.listController.addTask(event, ${index})">
-                    <div class="form-group">
+                    <div class="form-group mb-1">
                         <label class="sr-only" for "task">task</label>
                         <input type="text" class="form-control" name="task" placeholder="Enter task">
                          <button class="ml-1" type="submit">+</button>
