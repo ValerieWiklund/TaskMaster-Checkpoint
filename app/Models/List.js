@@ -13,21 +13,24 @@ export default class List {
 
     getTemplate(index) {
         let template = `
-     <div class="col-4">
-                <h4>${this.name}</h4>
+     <div class="col-3 border m-2">
+             <div class="title d-flex justify-content-between">
+                <h4>${this.name}</h4> <button class ="btn btn-outline-dark btn-sm my-2" onclick="app.controllers.listController.deleteList(${index})"> x </button>
+             </div>
                 <p>${this.description}</p>
                 <ul>`
         template += this.drawTasks(index)
         template += `
                 </ul>
-                <form onsubmit="app.controllers.listController.addTask(event, ${index})">
+                <form class="form-inline" onsubmit="app.controllers.listController.addTask(event, ${index})">
                     <div class="form-group">
-                        <label for "task">task</label>
+                        <label class="sr-only" for "task">task</label>
                         <input type="text" class="form-control" name="task" placeholder="Enter task">
+                         <button class="ml-1" type="submit">+</button>
                     </div>
-                    <button type="submit">+</button>
+                   
                 </form>
-                <button type="btn btn-danger" onclick="app.controllers.listController.deleteList(${index})"> X </button>
+                
                 </div>
             </div>
         `
@@ -42,7 +45,7 @@ export default class List {
     drawTasks(listIndex) {
         let taskTemplate = ""
         this.tasks.forEach((tsks, taskIndex) => {
-            taskTemplate += `<li> ${tsks} <span onclick = "app.controllers.listController.deleteTask(${listIndex},${taskIndex})">x </span></li>`
+            taskTemplate += `<li> ${tsks} <span onclick = "app.controllers.listController.deleteTask(${listIndex},${taskIndex})"> x </span></li>`
         });
         return taskTemplate
     }
