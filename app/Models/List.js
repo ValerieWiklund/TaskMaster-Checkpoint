@@ -3,13 +3,11 @@
 export default class List {
     //TODO You will need to create a constructor 
     //and the methods needed to create the view template for this  DONE
-    console.log("list checking in")
     constructor(data) {
         this.name = data.name
         this.description = data.description || ""
         this.tasks = data.tasks || []
     }
-
 
     // template for drawing the lists 
 
