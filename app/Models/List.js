@@ -1,6 +1,6 @@
 export default class List {
     //TODO You will need to create a constructor 
-    //and the methods needed to create the view template for this 
+    //and the methods needed to create the view template for this  DONE
 
     constructor(data) {
         this.name = data.name
@@ -37,9 +37,7 @@ export default class List {
         return template
 
     }
-    //
-    //TODO Finish coding for delete button
-    //NOTE may be done
+
     // draws the list of tasks and allows for deletion
 
     drawTasks(listIndex) {

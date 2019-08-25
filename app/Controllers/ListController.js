@@ -3,12 +3,10 @@ import ListService from "../Services/ListService.js";
 //Private
 let _listService = new ListService()
 
-//TODO Don't forget to render to the screen after every data change.
+//TODO Don't forget to render to the screen after every data change. -DONE
 function _drawLists() {
     let template = ``
     let lists = _listService.List
-
-    console.log("List Controller checking in ")
 
     lists.forEach((list, index) => {
         template += list.getTemplate(index)
@@ -26,7 +24,10 @@ export default class ListController {
         _drawLists();
     }
 
-    //TODO: Your app will need the ability to create, and delete both lists and listItems
+    //TODO: Your app will need the ability to create, and delete both lists and listItems -DONE
+
+    // add and delete lists
+
     addList(event) {
         event.preventDefault()
         let form = event.target
@@ -35,15 +36,6 @@ export default class ListController {
             description: form.description.value
         }
         _listService.addList(newList)
-        _drawLists()
-    }
-
-    addTask(event, listIndex) {
-        event.preventDefault()
-        console.log("adding task")
-        let form = event.target
-        let newTask = form.task.value
-        _listService.addTask(newTask, listIndex)
         _drawLists()
     }
 
@@ -57,6 +49,16 @@ export default class ListController {
         }
     }
 
+    //add and delete tasks/items from lists
+
+    addTask(event, listIndex) {
+        event.preventDefault()
+        let form = event.target
+        let newTask = form.task.value
+        _listService.addTask(newTask, listIndex)
+        _drawLists()
+    }
+
     deleteTask(listIndex, taskIndex) {
         let z = window.confirm("Are you sure you want to delete this task?")
         if (z == true) {
@@ -66,7 +68,4 @@ export default class ListController {
             return;
         }
     }
-
-
-
 }

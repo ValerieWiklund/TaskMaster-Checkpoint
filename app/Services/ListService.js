@@ -16,19 +16,16 @@ export default class ListService {
     //TODO  Here is where we handle all of our data manipulation, 
     //given the information you need in the controller, 
     //what methods will be required to support that functionality?
+
     constructor() {
         console.log("ListService checking in")
         this.getLists()
     }
 
+    //add and delete lists
+
     addList(newList) {
         _state.lists.push(new List(newList))
-        this.saveLists()
-        console.log(_state.lists)
-    }
-
-    addTask(newTask, listIndex) {
-        _state.lists[listIndex].tasks.push(newTask);
         this.saveLists()
     }
 
@@ -37,12 +34,19 @@ export default class ListService {
         this.saveLists()
     }
 
+    //add and delete new tasks/items from lists
+
+    addTask(newTask, listIndex) {
+        _state.lists[listIndex].tasks.push(newTask);
+        this.saveLists()
+    }
+
     deleteTask(listIndex, taskIndex) {
         _state.lists[listIndex].tasks.splice(taskIndex, 1)
         this.saveLists()
-
     }
 
+    //GETTER
 
     get List() {
         return _state.lists.map(list => new List(list))
