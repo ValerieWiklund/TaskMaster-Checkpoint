@@ -22,6 +22,8 @@ export default class ListController {
         _listService.getLists();
         //NOTE: After updating the store, we can automatically call to draw the lists.
         _drawLists();
+
+        console.log("ListController checking in")
     }
 
     //TODO: Your app will need the ability to create, and delete both lists and listItems -DONE
