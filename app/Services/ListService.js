@@ -18,7 +18,6 @@ export default class ListService {
     //what methods will be required to support that functionality?
 
     constructor() {
-        console.log("ListService checking in")
         this.getLists()
     }
 
@@ -26,6 +25,7 @@ export default class ListService {
 
     addList(newList) {
         _state.lists.push(new List(newList))
+
         this.saveLists()
     }
 
