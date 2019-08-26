@@ -37,11 +37,11 @@ export default class ListController {
         }
         _listService.addList(newList)
         _drawLists()
+        form.reset()
     }
 
     deleteList(index) {
-        let z = window.confirm("Are you sure you want to delete this list?")
-        if (z == true) {
+        if (window.confirm("Are you sure you want to delete this list?")) {
             _listService.deleteList(index)
             _drawLists()
         } else {
@@ -60,8 +60,7 @@ export default class ListController {
     }
 
     deleteTask(listIndex, taskIndex) {
-        let z = window.confirm("Are you sure you want to delete this task?")
-        if (z == true) {
+        if (window.confirm("Are you sure you want to delete this task?")) {
             _listService.deleteTask(listIndex, taskIndex)
             _drawLists()
         } else {

@@ -43,7 +43,7 @@ export default class List {
     drawTasks(listIndex) {
         let taskTemplate = ""
         this.tasks.forEach((tsks, taskIndex) => {
-            taskTemplate += `<li> ${tsks} <span onclick = "app.controllers.listController.deleteTask(${listIndex},${taskIndex})"> x </span></li>`
+            taskTemplate += `<li> ${tsks} <span style="cursor:pointer" onclick="app.controllers.listController.deleteTask(${listIndex},${taskIndex})"> x </span></li>`
         });
         return taskTemplate
     }
